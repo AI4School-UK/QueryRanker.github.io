@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Carousel Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./icon.png" rel="icon">
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./dist/css/grid.css" rel="stylesheet">
+    <link href="./dist/css/carousel.css" rel="stylesheet">
+    
+    <link href="./dist/css/navbar.css" rel="stylesheet">
+  </head>
+  <style>
+    #mainBody {
+      width: 75%;
+      align-items: center;
+      text-align: center;
+    }
+    .col-6 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 0 0;
+    }
+    .header{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .row {
+      display: flex;
+      width: 50%;
+      transform: translateX(-50%);
+      left: 50%;
+      position: relative;
+      margin: 0 0 0 0;
+      padding: 0;
+    }
+    </style>
+  <body>
+
+    <header>
+      <nav class="navbar navbar-dark bg-dark fixed-top d-flex">
+        <div id="navbarsExample01 col-4">
+          <ul class="navbar-nav mr-auto">
+            <br>
+            <form class="form-inline mt-2 mt-md-0" onsubmit="event.preventDefault();">
+              <input class="form-control mr-sm-2" type="text" placeholder="Query"  id="listiInput">
+              <button class="btn btn-primary" id="searchFile">Search</button>
+            </form>
+            <br>            
+            <li class="nav-item">
+              <form class="form-inline mt-2 mt-md-0" onsubmit="event.preventDefault();">
+                <div class="dropdown mr-2" style="position: relative;">
+                  <a class="btn btn-primary dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ranking function
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown01" style="position: absolute;">
+                    <!--<a class="dropdown-item" href="#" id="gradeSum">Sum</a>-->
+                    <a class="dropdown-item" href="#" id="gradeSearch">Unique Terms</a>
+                    <a class="dropdown-item" href="#" id="gradeMult">Full Match</a>
+                  </div>
+                </div>
+                <button class="btn btn-primary" id="queryPicker">Upload Query</button>
+                <input type="file" id="queryInput" style="display: none;" accept=".txt">
+              </form>
+              
+              <hr style="width:50%;text-align:left;margin-left:0;background-color:white">
+              <div class="d-flex">
+                <form class="form-inline mt-2 mt-md-0 mr-2" onsubmit="event.preventDefault();">
+                  <button class="btn btn-primary" id="filePicker">Upload Document</button>
+                  <input type="file" id="fileInput" style="display: none;" multiple accept=".txt">
+                </form>
+                <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal" >Create Document</button>
+                <button type="button" class="btn btn-primary" id="createdDocumentsToggle" >Show Documents</button>
+              </div>
+              <h1></h1>
+            </li>
+            <li class="nav-item">
+
+            </li>
+          </ul>
+        </div>
+        <h1  style="color: white; background-color: #343A40;">AI4School Search Engine</h1>
+      </nav>
+    </header>
+    <br>
+    <main role="main">
+      
+      <div class="container marketing">
+        <hr class="featurette-divider">
+        <div class="header">
+            <h2 class="featurette-heading">Search Results</h2>
+        </div>
+        <br>
+
+        <div class="container" id="mainBody">
+          <div class="row" id="title">
+            <h5 class="col-6"> Retrieval Score</h5>
+            <h5 class="col-6">File Name</h5>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body ">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" >Title:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" >Body:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id="upload_file" class="btn btn-outline-success my-2 my-sm-0">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="createdDocuments" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container" id="createdDocumentsId">
+              <div class="row" id="title">
+
+                <h5 class="col-6">File Name</h5>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="./dist/js/bootstrap.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/txt.js"></script>
+    <script src="./js/functions/sum.js"></script>
+    <script src="./js/functions/search.js"></script>
+    <script src="./js/functions/mult.js"></script>
+
+  </body>
+</html>
